@@ -50,11 +50,11 @@ def get_info(url):
         for item in movie_items:
             # meta data
             douban_link = item.a['href']
-            title = item.find("li", {"class": "title"}).em.text
+            # title = item.find("li", {"class": "title"}).em.text
 
             rating = item.find(
                 "span", {"class": "date"}).find_previous_siblings()
-            if len(rating) > 0:
+            info.append([douban_link,rating,imdb])
                 rating = get_rating(rating[0]['class'][0])
             else:
                 rating = None
